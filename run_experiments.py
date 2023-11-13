@@ -142,10 +142,10 @@ def run_configurations(basepath_to_data,phases,trial_to_load_list,trial_to_run_l
                             train_model(basepath_to_data,cnn_network_contrastive,second_cnn_network,classification,load_path_dir,save_path_dir,seed,batch_size,held_out_lr,fraction,modalities,leads,saved_weights,phases,original_downstream_dataset,downstream_task,class_pair,input_perturbed,perturbation,trial_to_load=trial_to_load,trial_to_run=trial_to_run,nencoders=nencoders,embedding_dim=embedding_dim,nviews=nviews,labelled_fraction=labelled_fraction,num_epochs=max_epochs)
 
 #%%
-basepath_to_data = '/mnt/SecondaryHDD'
+basepath_to_data = '/Users/gayalkuruppu/Documents/Research/Datasets/ECG'
 phases = ['train','val']#['test'] #['train','val'] #['test']
-trial_to_load_list = ['SimCLR','CMSC','CMLC','CMSMLC'] #for loading pretrained weights
-trial_to_run_list =  ['SimCLR','CMSC','CMLC','CMSMLC'] #['Linear','Linear','Linear','Linear'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning'] #['Linear','Linear','Linear','Linear'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning']  #['Linear','Linear','Linear','Linear']  #['Random']#,'Fine-Tuning','Fine-Tuning','Fine-Tuning']#['SimCLR','CMSC','CMLC','CMSMLC'] #current trial to run and perform training # Fine-Tuning | Same as trial_to_load
+trial_to_load_list = ['CMLC','CMSMLC'] #for loading pretrained weights
+trial_to_run_list =  ['CMLC','CMSMLC'] #['Linear','Linear','Linear','Linear'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning'] #['Linear','Linear','Linear','Linear'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning']  #['Linear','Linear','Linear','Linear']  #['Random']#,'Fine-Tuning','Fine-Tuning','Fine-Tuning']#['SimCLR','CMSC','CMLC','CMSMLC'] #current trial to run and perform training # Fine-Tuning | Same as trial_to_load
 embedding_dim_list = [320,256,128,64,32]
 downstream_dataset_list = ['chapman']#,'physionet2020'] #dataset for pretraininng # 'chapman' | 'physionet2020'
 second_dataset_list = ['']#physionet2020'] #['physionet2020','cardiology','physionet2017','chapman']#,'physionet2020'] #only used for fine-tuning & linear trials #keep as list of empty strings if pretraining

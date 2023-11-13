@@ -53,7 +53,7 @@ def obtain_contrastive_loss(latent_embeddings,pids,trial):
         loss (torch.Tensor): scalar NCE loss 
     """
     if trial in ['CMSC','CMLC','CMSMLC']:
-        pids = np.array(pids,dtype=np.object)   
+        pids = np.array(pids,dtype=object)   
         pid1,pid2 = np.meshgrid(pids,pids)
         pid_matrix = pid1 + '-' + pid2
         pids_of_interest = np.unique(pids + '-' + pids) #unique combinations of pids of interest i.e. matching
@@ -317,7 +317,7 @@ def obtain_load_path_dir(phases,save_path_dir,trial_to_run,second_dataset,labell
     return load_path_dir, save_path_dir
 
 def make_saving_directory_contrastive(phases,dataset_name,trial_to_load,trial_to_run,seed,max_seed,task,embedding_dim,leads,input_perturbed,perturbation,evaluation=False):
-    base_path = '/mnt/SecondaryHDD/Contrastive Learning Results' 
+    base_path = '/Users/gayalkuruppu/Documents/Research/FoundationModel/CLOCS/results/Contrastive_Learning_Results' 
     seed_path = 'seed%i' % int(seed)
     dataset_path = dataset_name#[0] #dataset used for training
     if leads is None:

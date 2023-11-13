@@ -578,8 +578,13 @@ class my_dataset_contrastive(Dataset):
                     
         elif self.trial in ['CMC','SimCLR']:
             frame_views = torch.empty(1,nsamples,self.nviews)
+            # frame_views = torch.empty(1,12,2500)
+            print("nsamples ", nsamples)
+            print("nviews ", self.nviews)
+            print("frame_views shape ", frame_views.shape)
             for n in range(self.nviews):
                 """ Obtain Differing 'Views' of Same Instance by Perturbing Input Frame """
+                print("input_frame shape ", input_frame.shape)
                 frame = self.obtain_perturbed_frame(input_frame)
                 """ Normalize Data Frame """
                 frame = self.normalize_frame(frame)
@@ -587,7 +592,9 @@ class my_dataset_contrastive(Dataset):
                 label = torch.tensor(label,dtype=torch.float)
                 """ Frame Input Has 1 Channel """
                 frame = frame.unsqueeze(0)
+                print("line 590 ", frame.shape)
                 """ Populate Frame Views """
+                print("frame_views[0,:,n] shape ", frame_views[0,:,n].shape)
                 frame_views[0,:,n] = frame
                 
         elif self.trial in ['Linear','Fine-Tuning','Random']:
