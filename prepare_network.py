@@ -98,6 +98,20 @@ class cnn_network_contrastive(nn.Module):
             latent_embeddings[:,:,n] = h
         
         return latent_embeddings
+    
+
+    def predict(self, x):
+        """ Predicts labels for inputs x
+        Args:
+            x (torch.Tensor): inputs with N views (BxSxN)
+        Outputs:
+            y_hat (torch.Tensor): predicted labels for each of the N views (BxN)
+        """
+        h = self.forward(x)
+        y_hat = torch.empty(h.shape[0],h.shape[2],device=self.device)
+        for n in range(h.shape[2]):
+            y_hat[:,n] = self.linear(h[:,:,n])
+        return y_hat
 
 class second_cnn_network(nn.Module):
     

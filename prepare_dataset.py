@@ -577,8 +577,7 @@ class my_dataset_contrastive(Dataset):
                     fcount += 1
                     
         elif self.trial in ['CMC','SimCLR']:
-            frame_views = torch.empty(1,nsamples,self.nviews)
-            # frame_views = torch.empty(1,12,2500)
+            frame_views = torch.empty(1,2500,self.nviews)
             print("nsamples ", nsamples)
             print("nviews ", self.nviews)
             print("frame_views shape ", frame_views.shape)

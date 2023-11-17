@@ -122,7 +122,7 @@ def run_configurations(basepath_to_data,phases,trial_to_load_list,trial_to_run_l
                         leads, batch_size, held_out_lr, class_pair, modalities, fraction = obtain_information(trial_to_run,downstream_dataset,second_dataset,data2leads_dict,data2bs_dict,data2lr_dict,data2classpair_dict)
                         
                         max_epochs = 400 #hard stop for training
-                        max_seed = 5
+                        max_seed = 3
                         seeds = np.arange(max_seed)
                         for seed in seeds:
                             save_path_dir, seed = make_saving_directory_contrastive(phases,downstream_dataset,trial_to_load,trial_to_run,seed,max_seed,downstream_task,embedding_dim,original_leads,input_perturbed,perturbation)
@@ -143,10 +143,10 @@ def run_configurations(basepath_to_data,phases,trial_to_load_list,trial_to_run_l
 
 #%%
 basepath_to_data = '/Users/gayalkuruppu/Documents/Research/Datasets/ECG'
-phases = ['train','val']#['test'] #['train','val'] #['test']
-trial_to_load_list = ['CMLC','CMSMLC'] #for loading pretrained weights
-trial_to_run_list =  ['CMLC','CMSMLC'] #['Linear','Linear','Linear','Linear'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning'] #['Linear','Linear','Linear','Linear'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning']  #['Linear','Linear','Linear','Linear']  #['Random']#,'Fine-Tuning','Fine-Tuning','Fine-Tuning']#['SimCLR','CMSC','CMLC','CMSMLC'] #current trial to run and perform training # Fine-Tuning | Same as trial_to_load
-embedding_dim_list = [320,256,128,64,32]
+phases = ['test'] #['train','val'] #['test']
+trial_to_load_list = ['CMLC']#,'CMSMLC'] #for loading pretrained weights
+trial_to_run_list =  ['CMLC']#,'CMSMLC'] #['Linear','Linear','Linear','Linear'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning'] #['Linear','Linear','Linear','Linear'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning'] #['Fine-Tuning','Fine-Tuning','Fine-Tuning','Fine-Tuning']  #['Linear','Linear','Linear','Linear']  #['Random']#,'Fine-Tuning','Fine-Tuning','Fine-Tuning']#['SimCLR','CMSC','CMLC','CMSMLC'] #current trial to run and perform training # Fine-Tuning | Same as trial_to_load
+embedding_dim_list = [320,256]#,128,64,32]
 downstream_dataset_list = ['chapman']#,'physionet2020'] #dataset for pretraininng # 'chapman' | 'physionet2020'
 second_dataset_list = ['']#physionet2020'] #['physionet2020','cardiology','physionet2017','chapman']#,'physionet2020'] #only used for fine-tuning & linear trials #keep as list of empty strings if pretraining
 labelled_fraction_list = [1]#0.25,0.50,0.75,1.00] #proportion of labelled training data to train on # SHOULD BE 1 for pretraining #[0.25,0.50,0.75,1.00] for finetuning and linear evaluation

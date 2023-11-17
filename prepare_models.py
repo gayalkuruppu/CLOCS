@@ -21,7 +21,8 @@ def load_initial_model_contrastive(cnn_network,phases,save_path_dir,saved_weight
     """ Load models with maml weights """
     dropout_type = 'drop1d' #options: | 'drop1d' | 'drop2d'
     p1,p2,p3 = 0.1,0.1,0.1 #initial dropout probabilities #0.2, 0, 0
-    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')   
+    # device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')   
+    device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')   
     model = cnn_network(dropout_type,p1,p2,p3,nencoders=nencoders,embedding_dim=embedding_dim,trial=trial_to_run,device=device)
     print(device)
     """ Inference Without Meta Learning """
